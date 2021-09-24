@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sort Thing</title>
+  </head>
+  <body>
+    <header>I am the title</header>
+    <section>
+      <div id="controls-area">
+        <form>
+          <select name="algorithm">
+            <option value="select">Select</option>
+            <option value="bubble$">Bubble</option>
+            <option value="merge">Merge</option>
+          </select>
+          <label for="">
+            <h2>Size</h2>
+            <input type="range" id="size" value="3" min="2" max="50" />
+          </label>
+
+          <input type="button" id="btn" value="generate" />
+        </form>
+      </div>
+
+      <div id="bars-area">
+        <div id="bars">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </div>
+    </section>
+    <script src="scipt.js"></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --numbOfBars: 3;
+}
+header {
+  background-color: rgb(29, 29, 29);
+  color: white;
+  text-align: center;
+  height: 10vh;
+}
+section {
+  background-color: red;
+  width: 95vw;
+  height: 88vh;
+  margin: 0 auto;
+  display: flex;
+}
+#controls-area {
+  width: 25%;
+  background-color: greenyellow;
+}
+#btn {
+  display: block;
+}
+#bars-area {
+  width: 75%;
+  background-color: orange;
+}
+
+#bars {
+  display: flex;
+  justify-content: space-evenly;
+}
+.bar {
+  text-align: center;
+
+  /* - 95 w & h, save some space */
+  width: calc(85% / var(--numbOfBars));
+
+  background-color: thistle;
+}
+.bar--swap {
+  background-color: red;
+  /* add some cool animatoins */
+}
