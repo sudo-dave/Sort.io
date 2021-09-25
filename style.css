@@ -3,6 +3,10 @@
   margin: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: rgb(29, 29, 29);
+}
+
 :root {
   --numbOfBars: 3;
 }
@@ -14,10 +18,12 @@ header {
 }
 section {
   background-color: red;
-  width: 95vw;
+  /* width: 95vw; */
+  width: 100%;
   height: 88vh;
   margin: 0 auto;
   display: flex;
+  flex-direction: row-reverse;
 }
 #controls-area {
   width: 25%;
@@ -27,7 +33,7 @@ section {
   display: block;
 }
 #bars-area {
-  width: 75%;
+  width: 100%;
   background-color: orange;
 }
 
@@ -37,7 +43,9 @@ section {
 }
 .bar {
   text-align: center;
-
+  font-size: 15px;
+  padding-top: 1vh;
+  /* height: 50vh; */
   /* - 95 w & h, save some space */
   width: calc(85% / var(--numbOfBars));
 
@@ -46,4 +54,42 @@ section {
 .bar--swap {
   background-color: red;
   /* add some cool animatoins */
+}
+footer {
+  text-align: center;
+  color: aliceblue;
+}
+
+@media only screen and (max-width: 768px) {
+  section {
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+  }
+  header {
+    background-color: grey;
+  }
+  #controls-area {
+    width: 100%;
+  }
+
+  #bars-area {
+  }
+
+  #bars {
+  }
+
+  #controls-area {
+    width: 100%;
+    height: 20%;
+    background-color: greenyellow;
+  }
+  #btn {
+    display: block;
+  }
+
+  form {
+  }
 }

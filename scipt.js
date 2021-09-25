@@ -21,15 +21,16 @@ function changeNumberOfBars(){
 
 
     for(let i = 0; i < inputSize; i++){
-        let randNum = Math.floor((Math.random() * manxSize) +minSize);
+        let randNum = Math.floor(Math.random() * (manxSize - minSize) + minSize);
+        // let randNum = Math.floor((Math.random() * manxSize) +minSize);
 
         let barDiv = document.createElement("div");
         
             barDiv.textContent = randNum;
             barDiv.setAttribute("class","bar");
             barDiv.setAttribute("id",i);
-            barDiv.style.height = randNum *10+"px";
-
+            barDiv.style.height = randNum + 20 + "vh";
+        
         barsElement.appendChild(barDiv);
         
     }
