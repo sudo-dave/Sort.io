@@ -1,83 +1,87 @@
-export class Bars{
-    constructor(inputSize){
-        this.inputSize = (inputSize) ? inputSize : 3;
-        this.barsElement = document.getElementById("bars");
-        this.cssVaribles = document.documentElement.style;
-        this.swapSpeed = 3000;
-        this.manxSize = 50;
-        this.minSize = 2;
-        //use object insteafd of map, when you know your keys
-        this.barVaules = {};
+export class Bars {
+  constructor(inputSize) {
+    this.inputSize = inputSize ? inputSize : 3;
+    this.barsElement = document.getElementById("bars");
+    this.cssVaribles = document.documentElement.style;
+    this.swapSpeed = 3000;
+    this.manxSize = 50;
+    this.minSize = 2;
+    this.barVaules = [];
+  }
+  changeNumberOfBars() {
+    this.barsElement.innerHTML = "";
+    this.cssVaribles.setProperty("--numbOfBars", this.inputSize);
+
+    for (let i = 0; i < this.inputSize; i++) {
+      let randNum = Math.floor(
+        Math.random() * (this.manxSize - this.minSize) + this.minSize
+      );
+
+      let barDiv = document.createElement("div");
+
+      barDiv.textContent = randNum;
+      barDiv.setAttribute("class", "bar");
+      barDiv.setAttribute("id", i);
+      barDiv.style.height = randNum + 20 + "vh";
+
+      this.barsElement.appendChild(barDiv);
+
+      this.barVaules.push({ value: randNum, Id: i });
     }
-    changeNumberOfBars(){
-        this.barsElement.innerHTML = "";
-        this.cssVaribles.setProperty("--numbOfBars", this.inputSize);
-    
+  }
+  swapBars(barID, barID2) {
+    console.log(barID, barID2);
+    var barOne = document.getElementById(barID);
+    var barTwo = document.getElementById(barID2);
 
-        for(let i = 0; i < this.inputSize; i++){
-        let randNum = Math.floor(Math.random() * (this.manxSize - this.minSize) + this.minSize);
+    var barOneVal = barOne.textContent;
+    var barTwoVal = barTwo.textContent;
 
-        let barDiv = document.createElement("div");
-        
-        barDiv.textContent = randNum;
-        barDiv.setAttribute("class","bar");
-        barDiv.setAttribute("id",i);
-        barDiv.style.height = randNum + 20 + "vh";
-        
-        this.barsElement.appendChild(barDiv);
-        this.barVaules[i] = randNum;
-        }
-
-
-    }
-    swapBars(barID, barID2){
-
-    let barOne = document.getElementById(barID);
-    let barTwo = document.getElementById(barID2);
-
-    let barOneVal = barOne.textContent;
-    let barTwoVal = barTwo.textContent;
-
-    let barOneHeight = barOne.style.height;
-    let barTwoHeight = barTwo.style.height;
+    var barOneHeight = barOne.style.height;
+    var barTwoHeight = barTwo.style.height;
 
     barOne.setAttribute("class", " bar bar--swap");
     barTwo.setAttribute("class", " bar bar--swap");
-
-    setTimeout(() => {
+    console.log("wait::");
     barOne.textContent = barTwoVal;
     barTwo.textContent = barOneVal;
-    
+
     barOne.style.height = barTwoHeight;
     barTwo.style.height = barOneHeight;
 
     barOne.setAttribute("class", "bar");
     barTwo.setAttribute("class", "bar");
 
-    }, this.swapSpeed);
-    }
+    barOne.setAttribute("id", barID2);
+    barTwo.setAttribute("id", barID);
+  }
 }
 
-export class Algo{
-    constructor(bars){
-        this.bars = bars;
+export class Algo {
+  constructor(bars) {
+    this.bars = bars;
+  }
+  selectionSort() {
+    let barVaules = this.bars.barVaules;
+    let n = this.bars.inputSize;
+    var i, j, min_idx;
+
+    for (i = 0; i < n - 1; i++) {
+      min_idx = i;
+      for (j = i + 1; j < n; j++)
+        if (barVaules[j]["value"] < barVaules[min_idx]["value"]) min_idx = j;
+
+      var tempVal = barVaules[min_idx]["value"];
+      var tempId = barVaules[min_idx]["Id"];
+
+      barVaules[min_idx]["value"] = barVaules[i]["value"];
+      barVaules[min_idx]["Id"] = barVaules[i]["Id"];
+      barVaules[i]["value"] = tempVal;
+      barVaules[i]["Id"] = tempId;
+
+      this.bars.swapBars(barVaules[min_idx]["Id"], barVaules[i]["Id"]);
+      console.log("Finsih the wait");
     }
-    selectionSort(){
-        let n = this.bars.inputSize;
-        let arr 
-        var i, j, min_idx;
- 
-        // One by one move boundary of unsorted subarray
-        for (i = 0; i < n-1; i++)
-        {
-            // Find the minimum element in unsorted array
-            min_idx = i;
-            for (j = i + 1; j < n; j++)
-            if (arr[j] < arr[min_idx])
-                min_idx = j;
-     
-            // Swap the found minimum element with the first element
-            swap(arr,min_idx, i);
-        }
-    }
+    console.log(barVaules);
+  }
 }
