@@ -8,7 +8,6 @@ const sortBtn = document.getElementById("btn");
 var globalBar;
 
 window.onload = function () {
-  // changeNumberOfBars();
   globalBar = new Bars();
   globalBar.changeNumberOfBars();
   console.log(globalBar);

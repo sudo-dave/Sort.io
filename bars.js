@@ -7,6 +7,7 @@ export class Bars {
     this.manxSize = 50;
     this.minSize = 2;
     this.barVaules = [];
+    this.isSorted = false;
   }
   changeNumberOfBars() {
     this.barsElement.innerHTML = "";
@@ -28,26 +29,33 @@ export class Bars {
 
       this.barVaules.push({ value: randNum, Id: i });
     }
+    this.checkSorted();
   }
+
+  checkSorted() {}
   swapBars(barID, barID2) {
     console.log(barID, barID2);
     var barOne = document.getElementById(barID);
     var barTwo = document.getElementById(barID2);
 
-    var barOneVal = barOne.textContent;
-    var barTwoVal = barTwo.textContent;
-
-    var barOneHeight = barOne.style.height;
-    var barTwoHeight = barTwo.style.height;
-
     barOne.setAttribute("class", " bar bar--swap");
     barTwo.setAttribute("class", " bar bar--swap");
     console.log("wait::");
-    barOne.textContent = barTwoVal;
-    barTwo.textContent = barOneVal;
-
-    barOne.style.height = barTwoHeight;
-    barTwo.style.height = barOneHeight;
+  }
+  swapBarsTwo(barID, barID2) {
+    var barOne = document.getElementById(barID);
+    var barTwo = document.getElementById(barID2);
+    [
+      barOne.textContent,
+      barTwo.textContent,
+      barOne.style.height,
+      barTwo.style.height,
+    ] = [
+      barTwo.textContent,
+      barOne.textContent,
+      barTwo.style.height,
+      barOne.style.height,
+    ];
 
     barOne.setAttribute("class", "bar");
     barTwo.setAttribute("class", "bar");
@@ -61,7 +69,7 @@ export class Algo {
   constructor(bars) {
     this.bars = bars;
   }
-  selectionSort() {
+  async selectionSort() {
     let barVaules = this.bars.barVaules;
     let n = this.bars.inputSize;
     var i, j, min_idx;
@@ -80,8 +88,15 @@ export class Algo {
       barVaules[i]["Id"] = tempId;
 
       this.bars.swapBars(barVaules[min_idx]["Id"], barVaules[i]["Id"]);
+      await this.sleep(3000);
+      this.bars.swapBarsTwo(barVaules[min_idx]["Id"], barVaules[i]["Id"]);
+
       console.log("Finsih the wait");
     }
     console.log(barVaules);
+  }
+
+  sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }
