@@ -1,15 +1,16 @@
 export class Bars {
-  constructor(inputSize) {
+  constructor(inputSize, swapSpeed) {
     this.inputSize = inputSize ? inputSize : 3;
     this.barsElement = document.getElementById("bars");
     this.cssVaribles = document.documentElement.style;
-    this.swapSpeed = 3000;
+    this.swapSpeed = swapSpeed ? swapSpeed * 100 : 300;
     this.manxSize = 50;
     this.minSize = 2;
     this.barVaules = [];
     this.isSorted = false;
   }
   changeNumberOfBars() {
+    this.barVaules = [];
     this.barsElement.innerHTML = "";
     this.cssVaribles.setProperty("--numbOfBars", this.inputSize);
 
@@ -25,14 +26,25 @@ export class Bars {
       barDiv.setAttribute("id", i);
       barDiv.style.height = randNum + 20 + "vh";
 
-      this.barsElement.appendChild(barDiv);
+      this.barsElement.append(barDiv);
 
       this.barVaules.push({ value: randNum, Id: i });
     }
-    this.checkSorted();
+
+    if (this.checkSorted()) this.changeNumberOfBars();
   }
 
-  checkSorted() {}
+  checkSorted() {
+    let numbs = this.barVaules;
+    for (let i = 0; i < numbs.length - 1; i++) {
+      if (numbs[i].value > numbs[i + 1].value) return false;
+    }
+    return true;
+  }
+  setSwapSpeed(speed) {
+    this.swapSpeed = speed * 100;
+  }
+
   swapBars(barID, barID2) {
     console.log(barID, barID2);
     var barOne = document.getElementById(barID);
@@ -88,11 +100,12 @@ export class Algo {
       barVaules[i]["Id"] = tempId;
 
       this.bars.swapBars(barVaules[min_idx]["Id"], barVaules[i]["Id"]);
-      await this.sleep(3000);
+      await this.sleep(this.bars.swapSpeed);
       this.bars.swapBarsTwo(barVaules[min_idx]["Id"], barVaules[i]["Id"]);
 
       console.log("Finsih the wait");
     }
+    this.bars.isSorted = true;
     console.log(barVaules);
   }
 

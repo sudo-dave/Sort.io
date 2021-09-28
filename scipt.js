@@ -14,11 +14,17 @@ window.onload = function () {
 };
 
 sizeSlider.addEventListener("input", (e) => {
-  globalBar = new Bars(e.currentTarget.value);
-  globalBar.changeNumberOfBars();
+  globalBar = new Bars(e.currentTarget.value, speedSlider.value);
   console.log(globalBar);
+  globalBar.changeNumberOfBars();
 });
 sortBtn.addEventListener("click", () => {
+  if (globalBar.isSorted) {
+    alert("is sorted");
+    return;
+  }
+  console.log(globalBar);
+
   let algoName = selectElem.value;
   let algo = new Algo(globalBar);
 
@@ -27,4 +33,8 @@ sortBtn.addEventListener("click", () => {
   }
 });
 
-speedSlider.addEventListener("input", (e) => {});
+speedSlider.addEventListener("input", (e) => {
+  globalBar.setSwapSpeed(e.currentTarget.value);
+  console.log("spedd setto " + e.currentTarget.value);
+  console.log(globalBar);
+});

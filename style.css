@@ -59,7 +59,9 @@ footer {
   text-align: center;
   color: aliceblue;
 }
-
+#speed {
+  direction: rtl;
+}
 @media only screen and (max-width: 768px) {
   section {
     background-color: red;
