@@ -55,6 +55,14 @@ section {
   background-color: red;
   /* add some cool animatoins */
 }
+.bar--highlight {
+  background-color: darkmagenta;
+}
+
+/* nameing */
+.bar--highlight--secondary {
+  background-color: lightpink;
+}
 footer {
   text-align: center;
   color: aliceblue;

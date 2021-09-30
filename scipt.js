@@ -10,19 +10,24 @@ var globalBar;
 window.onload = function () {
   globalBar = new Bars();
   globalBar.changeNumberOfBars();
+  console.log("START");
   console.log(globalBar);
 };
 
 sizeSlider.addEventListener("input", (e) => {
-  globalBar = new Bars(e.currentTarget.value, speedSlider.value);
-  console.log(globalBar);
+  console.log("SIZe slider");
+  let sliderVal = e.currentTarget.value;
+  globalBar = new Bars(sliderVal);
+  globalBar = new Bars(sliderVal, speedSlider.value);
   globalBar.changeNumberOfBars();
+  console.log(globalBar);
 });
 sortBtn.addEventListener("click", () => {
   if (globalBar.isSorted) {
     alert("is sorted");
     return;
   }
+  console.log("SORT BTN **");
   console.log(globalBar);
 
   let algoName = selectElem.value;
@@ -30,11 +35,14 @@ sortBtn.addEventListener("click", () => {
 
   if (algoName === "Selection") {
     algo.selectionSort();
+  } else if (algoName === "Bubble") {
+    algo.bubbleSort();
+  } else if (algoName === "Insertion") {
+    algo.insertionSort();
   }
 });
 
 speedSlider.addEventListener("input", (e) => {
-  globalBar.setSwapSpeed(e.currentTarget.value);
-  console.log("spedd setto " + e.currentTarget.value);
-  console.log(globalBar);
+  let sliderVal = e.currentTarget.value;
+  globalBar.setSwapSpeed(sliderVal);
 });
