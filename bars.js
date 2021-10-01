@@ -2,17 +2,17 @@ export class Bars {
   constructor(inputSize, swapSpeed) {
     this.inputSize = inputSize ? inputSize : 3;
     this.barsElement = document.getElementById("bars");
-    this.cssVaribles = document.documentElement.style;
+    this.cssbarObjectsaribles = document.documentElement.style;
     this.swapSpeed = swapSpeed ? swapSpeed * 100 : 300;
     this.manxSize = 50;
     this.minSize = 2;
-    this.barVaules = [];
+    this.barbarObjectsaules = [];
     this.isSorted = false;
   }
   changeNumberOfBars() {
-    this.barVaules = [];
+    this.barbarObjectsaules = [];
     this.barsElement.innerHTML = "";
-    this.cssVaribles.setProperty("--numbOfBars", this.inputSize);
+    this.cssbarObjectsaribles.setProperty("--numbOfBars", this.inputSize);
 
     for (let i = 0; i < this.inputSize; i++) {
       let randNum = Math.floor(
@@ -28,14 +28,14 @@ export class Bars {
 
       this.barsElement.append(barDiv);
 
-      this.barVaules.push({ value: randNum, Id: i });
+      this.barbarObjectsaules.push({ value: randNum, Id: i });
     }
 
     if (this.checkSorted()) this.changeNumberOfBars();
   }
 
   checkSorted() {
-    let numbs = this.barVaules;
+    let numbs = this.barbarObjectsaules;
     for (let i = 0; i < numbs.length - 1; i++) {
       if (numbs[i].value > numbs[i + 1].value) return false;
     }
@@ -82,9 +82,21 @@ export class Algo {
   sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
+  swap(i, j) {
+    let barObjects = this.bars.barbarObjectsaules;
+    let tempbarObjectsal = barObjects[i]["value"];
+    let tempID = barObjects[i]["Id"];
+
+    barObjects[i]["value"] = barObjects[j]["value"];
+    barObjects[i]["Id"] = barObjects[j]["Id"];
+    barObjects[j]["value"] = tempbarObjectsal;
+    barObjects[j]["Id"] = tempID;
+
+    this.bars.swapBarsAnimaton(tempID, barObjects[i]["Id"]);
+  }
   async selectionSort() {
     let bars = this.bars;
-    let barObjects = bars.barVaules;
+    let barObjects = bars.barbarObjectsaules;
     let n = bars.inputSize;
     let i, j, min_idx;
 
@@ -116,7 +128,7 @@ export class Algo {
   //Add the aniamtion and delay
   async bubbleSort() {
     let bars = this.bars;
-    let barObjects = bars.barVaules;
+    let barObjects = bars.barbarObjectsaules;
     let n = bars.inputSize;
     let i, j;
     for (i = 0; i < n - 1; i++) {
@@ -142,41 +154,27 @@ export class Algo {
   //*** */
   async insertionSort() {
     let bars = this.bars;
-    let barObjects = bars.barVaules;
+    let barObjects = bars.barbarObjectsaules;
+
     let n = bars.inputSize;
-    let i, keyVal, j, keyID;
+    let i, j;
     console.log("insdie the insertion sort");
-    // console.log("BEgan thing" + bars);
 
     for (i = 1; i < n; i++) {
-      keyVal = barObjects[i]["value"];
-      keyID = barObjects[i]["Id"];
+      j = i;
 
-      j = i - 1;
+      while (j > 0 && barObjects[j]["value"] < barObjects[j - 1]["value"]) {
+        bars.setAnimation(
+          [barObjects[j]["Id"], barObjects[j - 1]["Id"]],
+          "bar bar--swap"
+        );
 
-      while (j >= 0 && barObjects[j]["value"] > keyVal) {
-        barObjects[j + 1]["value"] = barObjects[j]["value"];
-        barObjects[j + 1]["Id"] = barObjects[j]["Id"];
+        await this.sleep(bars.swapSpeed);
 
-        j = j - 1;
+        this.swap(j, j - 1);
+        j -= 1;
       }
-
-      barObjects[j + 1]["value"] = keyVal;
-      barObjects[j + 1]["Id"] = keyID;
     }
     console.log(barObjects);
-  }
-
-  swap(i, j) {
-    let barObjects = this.bars.barVaules;
-    let tempVal = barObjects[i]["value"];
-    let tempID = barObjects[i]["Id"];
-
-    barObjects[i]["value"] = barObjects[j]["value"];
-    barObjects[i]["Id"] = barObjects[j]["Id"];
-    barObjects[j]["value"] = tempVal;
-    barObjects[j]["Id"] = tempID;
-
-    this.bars.swapBarsAnimaton(tempID, barObjects[i]["Id"]);
   }
 }
