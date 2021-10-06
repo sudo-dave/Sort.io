@@ -64,6 +64,13 @@ input[type="range"] {
   background-color: #4caf50; /* Green */
   color: white;
 }
+.btn--new {
+  background-color: grey;
+  color: white;
+}
+.btn--disable {
+  background-color: darkmagenta !important;
+}
 .sliders {
   margin-top: 20px;
 }

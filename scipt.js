@@ -3,9 +3,9 @@ import { Bars, Algo } from "./bars.js";
 const sizeSlider = document.getElementById("size");
 const selectElem = document.querySelector("select[name=algorithm]");
 const speedSlider = document.getElementById("speed");
-const sortBtn = document.getElementById("btn");
+const sortBtn = document.querySelectorAll("input[type=button]");
 
-var globalBar;
+let globalBar;
 
 window.onload = function () {
   globalBar = new Bars();
@@ -14,33 +14,42 @@ window.onload = function () {
   console.log(globalBar);
 };
 
-sizeSlider.addEventListener("input", (e) => {
-  console.log("SIZe slider");
-  let sliderVal = e.currentTarget.value;
+sizeSlider.addEventListener("input", () => {
+  console.log("hiadsfja");
+  let sliderVal = sizeSlider.value;
   globalBar = new Bars(sliderVal);
   globalBar = new Bars(sliderVal, speedSlider.value);
   globalBar.changeNumberOfBars();
   console.log(globalBar);
 });
-sortBtn.addEventListener("click", () => {
-  if (globalBar.isSorted) {
-    alert("is sorted");
-    return;
-  }
-  console.log("SORT BTN **");
-  console.log(globalBar);
 
-  let algoName = selectElem.value;
-  let algo = new Algo(globalBar);
+sortBtn.forEach((el) =>
+  el.addEventListener("click", (e) => {
+    let algoName = e.currentTarget.value;
 
-  if (algoName === "Selection") {
-    algo.selectionSort();
-  } else if (algoName === "Bubble") {
-    algo.bubbleSort();
-  } else if (algoName === "Insertion") {
-    algo.insertionSort();
-  }
-});
+    if (algoName === "New Array") {
+      //Bug when getting new set while sorting
+      sizeSlider.dispatchEvent(new Event("input"));
+      return;
+    }
+    if (globalBar.isSorted) {
+      alert("Set is sorted alreaedy");
+      return;
+    }
+
+    let algo = new Algo(globalBar);
+
+    if (algoName === "Selection") {
+      algo.selectionSort();
+    } else if (algoName === "Bubble") {
+      algo.bubbleSort();
+    } else if (algoName === "Insertion") {
+      algo.insertionSort();
+    }
+
+    console.log("done");
+  })
+);
 
 speedSlider.addEventListener("input", (e) => {
   let sliderVal = e.currentTarget.value;

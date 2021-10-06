@@ -72,13 +72,24 @@ export class Bars {
     barOne.setAttribute("id", barID2);
     barTwo.setAttribute("id", barID);
   }
+  changeStateButtons(isEnable) {
+    console.log("inside cchange state");
+    let styleClassName = isEnable ? "btn btn--sort" : "btn btn--disable";
+    let btns = document.querySelectorAll(".btn:not(:first-child)");
+    btns.forEach((btn) => {
+      btn.setAttribute("class", styleClassName);
+      btn.disabled = !isEnable;
+    });
+  }
 }
 
 export class Algo {
   constructor(bars) {
     this.bars = bars;
     this.bars.isSorted = true;
+    bars.changeStateButtons(false);
   }
+
   sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
@@ -93,6 +104,9 @@ export class Algo {
     barObjects[j]["Id"] = tempID;
 
     this.bars.swapBarsAnimaton(tempID, barObjects[i]["Id"]);
+  }
+  test() {
+    console.log("that waht very");
   }
 
   async merge(arr, start, mid, end) {
@@ -176,6 +190,7 @@ export class Algo {
       //try fixing this
       this.swap(min_idx, i);
     }
+    this.bars.changeStateButtons(true);
   }
   //Add the aniamtion and delay
   async bubbleSort() {
@@ -201,6 +216,7 @@ export class Algo {
       }
     }
     console.log(barObjects);
+    this.bars.changeStateButtons(true);
   }
   //Add the aniamtion and delay ****
   //*** */
@@ -228,5 +244,8 @@ export class Algo {
       }
     }
     console.log(barObjects);
+    this.bars.changeStateButtons(true);
+
+    // this.bars.changeStateButtons(true);
   }
 }
