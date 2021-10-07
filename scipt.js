@@ -1,53 +1,58 @@
-import { Bars, Algo } from "./bars.js";
+import { Bars } from "./bars.js";
+import { Algo } from "./algo.js";
 
 const sizeSlider = document.getElementById("size");
-const selectElem = document.querySelector("select[name=algorithm]");
 const speedSlider = document.getElementById("speed");
-const sortBtn = document.querySelectorAll("input[type=button]");
-
+const sortBtns = document.querySelectorAll(".btn:not(:first-child)");
+const newSetBtn = document.querySelector(".btn:first-child");
 let globalBar;
 
 window.onload = function () {
   globalBar = new Bars();
   globalBar.changeNumberOfBars();
-  console.log("START");
-  console.log(globalBar);
 };
-
 sizeSlider.addEventListener("input", () => {
-  console.log("hiadsfja");
+  if (globalBar.isSorting) globalBar.isSorting = false;
+
   let sliderVal = sizeSlider.value;
-  globalBar = new Bars(sliderVal);
   globalBar = new Bars(sliderVal, speedSlider.value);
   globalBar.changeNumberOfBars();
-  console.log(globalBar);
 });
 
-sortBtn.forEach((el) =>
-  el.addEventListener("click", (e) => {
-    let algoName = e.currentTarget.value;
+newSetBtn.addEventListener("click", () => {
+  sizeSlider.dispatchEvent(new Event("input"));
+});
 
-    if (algoName === "New Array") {
-      //Bug when getting new set while sorting
-      sizeSlider.dispatchEvent(new Event("input"));
-      return;
-    }
+sortBtns.forEach((el) =>
+  el.addEventListener("click", (e) => {
     if (globalBar.isSorted) {
       alert("Set is sorted alreaedy");
       return;
     }
+    let algoName = e.currentTarget.value;
 
     let algo = new Algo(globalBar);
-
-    if (algoName === "Selection") {
-      algo.selectionSort();
-    } else if (algoName === "Bubble") {
-      algo.bubbleSort();
-    } else if (algoName === "Insertion") {
-      algo.insertionSort();
-    }
-
-    console.log("done");
+    const sortBars = async () => {
+      let sort;
+      if (algoName === "Selection") {
+        sort = await algo.selectionSort();
+      } else if (algoName === "Bubble") {
+        sort = await algo.bubbleSort();
+      } else {
+        sort = await algo.insertionSort();
+      }
+    };
+    sortBars()
+      .then(() => {
+        globalBar.isSorted = true;
+        globalBar.isSorting = false;
+        globalBar.changeStateButtons(true);
+      })
+      .catch((e) => {
+        console.log("**" + e);
+        globalBar.changeStateButtons(true);
+        sizeSlider.dispatchEvent(new Event("input"));
+      });
   })
 );
 
