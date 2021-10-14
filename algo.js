@@ -70,7 +70,6 @@ export class Algo {
           );
 
           await this.sleep(bars.swapSpeed);
-          //try fixing this
 
           this.swap(j, j + 1);
         }

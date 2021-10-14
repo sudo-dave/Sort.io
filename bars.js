@@ -16,11 +16,11 @@ export class Bars {
     this.cssbarObjectsaribles.setProperty("--numbOfBars", this.inputSize);
 
     for (let i = 0; i < this.inputSize; i++) {
-      let randNum = Math.floor(
+      const randNum = Math.floor(
         Math.random() * (this.manxSize - this.minSize) + this.minSize
       );
 
-      let barDiv = document.createElement("div");
+      const barDiv = document.createElement("div");
 
       barDiv.textContent = randNum;
 
@@ -37,7 +37,7 @@ export class Bars {
   }
 
   checkSorted() {
-    let numbs = this.barbarObjectsaules;
+    const numbs = this.barbarObjectsaules;
     for (let i = 0; i < numbs.length - 1; i++) {
       if (numbs[i].value > numbs[i + 1].value) return false;
     }
@@ -76,8 +76,8 @@ export class Bars {
   }
   changeStateButtons(isEnable) {
     console.log("inside cchange state");
-    let styleClassName = isEnable ? "btn btn--sort" : "btn btn--disable";
-    let btns = document.querySelectorAll(".btn:not(:first-child)");
+    const styleClassName = isEnable ? "btn btn--sort" : "btn btn--disable";
+    const btns = document.querySelectorAll(".btn:not(:first-child)");
     btns.forEach((btn) => {
       btn.setAttribute("class", styleClassName);
       btn.disabled = !isEnable;
