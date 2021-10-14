@@ -5,6 +5,7 @@ export class Bars {
     this.cssbarObjectsaribles = document.documentElement.style;
     this.swapSpeed = swapSpeed ? swapSpeed * 60 : 180;
     this.manxSize = 50;
+    this.limitSize = 30;
     this.minSize = 2;
     this.barbarObjectsaules = [];
     this.isSorting = false;
@@ -22,7 +23,7 @@ export class Bars {
 
       const barDiv = document.createElement("div");
 
-      barDiv.textContent = randNum;
+      if (this.inputSize < this.limitSize) barDiv.textContent = randNum;
 
       barDiv.setAttribute("class", "bar");
       barDiv.setAttribute("id", i);
