@@ -6,7 +6,7 @@ const speedSlider = document.getElementById("speed");
 const sortBtns = document.querySelectorAll(".btn:not(:first-child)");
 const newSetBtn = document.querySelector(".btn:first-child");
 
-let globalBar;
+var globalBar;
 
 window.onload = function () {
   globalBar = new Bars();
@@ -15,7 +15,6 @@ window.onload = function () {
 
 sizeSlider.addEventListener("input", () => {
   if (globalBar.isSorting) globalBar.isSorting = false;
-  //used the else to fix the bug
   else {
     const sliderVal = sizeSlider.value;
     globalBar = new Bars(sliderVal, speedSlider.value);
@@ -24,7 +23,10 @@ sizeSlider.addEventListener("input", () => {
 });
 
 newSetBtn.addEventListener("click", () => {
-  sizeSlider.dispatchEvent(new Event("input"));
+  if (globalBar.isSorting) {
+    if (confirm("Create a new random numbers?"))
+      sizeSlider.dispatchEvent(new Event("input"));
+  } else sizeSlider.dispatchEvent(new Event("input"));
 });
 
 sortBtns.forEach((el) =>
@@ -38,13 +40,9 @@ sortBtns.forEach((el) =>
 
     const sortBars = async () => {
       let sort;
-      if (algoName === "Selection") {
-        sort = await algo.selectionSort();
-      } else if (algoName === "Bubble") {
-        sort = await algo.bubbleSort();
-      } else {
-        sort = await algo.insertionSort();
-      }
+      if (algoName === "Selection") sort = await algo.selectionSort();
+      else if (algoName === "Bubble") sort = await algo.bubbleSort();
+      else sort = await algo.insertionSort();
     };
     sortBars()
       .then(() => {

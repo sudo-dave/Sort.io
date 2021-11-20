@@ -32,14 +32,14 @@ export class Algo {
 
     for (i = 0; i < n - 1; i++) {
       min_idx = i;
-      bars.setAnimation([barObjects[i]["Id"]], "bar bar--highlight ");
-      await this.sleep(bars.swapSpeed);
+      // bars.setAnimation([barObjects[i]["Id"]], "bar bar--highlight ");
+      // await this.sleep(bars.swapSpeed);
       for (j = i + 1; j < n; j++) {
-        bars.setAnimation(
-          [barObjects[j]["Id"]],
-          "bar bar--highlight--secondary"
-        );
-        await this.sleep(bars.swapSpeed);
+        // bars.setAnimation(
+        //   [barObjects[j]["Id"]],
+        //   "bar bar--highlight--secondary"
+        // );
+        // await this.sleep(bars.swapSpeed);
         bars.setAnimation([barObjects[j]["Id"]], "bar");
 
         if (barObjects[j]["value"] < barObjects[min_idx]["value"]) min_idx = j;
@@ -51,11 +51,9 @@ export class Algo {
       );
 
       await this.sleep(bars.swapSpeed);
-      //try fixing this
       this.swap(min_idx, i);
     }
   }
-  //Add the aniamtion and delay
   async bubbleSort() {
     let bars = this.bars;
     let barObjects = bars.barbarObjectsaules;
@@ -79,8 +77,7 @@ export class Algo {
     }
     console.log(barObjects);
   }
-  //Add the aniamtion and delay ****
-  //*** */
+
   async insertionSort() {
     let bars = this.bars;
     let barObjects = bars.barbarObjectsaules;
