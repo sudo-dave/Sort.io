@@ -1,4 +1,4 @@
-# SortVisualizer
+# Sort.io
 <img src="Demo.gif">
 https://sudo-dave.github.io/SortVisualizer/
 
