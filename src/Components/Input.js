@@ -22,7 +22,7 @@ export default function Input() {
         onChange={(e) => setBars(createrRandArr(e.target.value))}
       />
 
-      <div className="btn-select-wrapper">
+      <div className="btns-wrapper">
         <select value={algo} onChange={(e) => setAlgo(e.target.value)}>
           <option value="Insertion">Insertion</option>
           <option value="Bubble">Bubble</option>

@@ -3,7 +3,7 @@ export const Config = {
   INIT_ALGO_NAME: "Insertion",
   INIT_ARR_SIZE: 18,
   RAND_ARR_LOW_VAL: 4,
-  RAND_ARR_MAX_VAL: 33,
-  INPUT_RANGE_MIN: 3,
+  RAND_ARR_MAX_VAL: 30,
+  INPUT_RANGE_MIN: 4,
   INPUT_RANGE_MAX: 20,
 };
