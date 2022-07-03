@@ -14,7 +14,11 @@ body{
 }
 
 body{
-    line-height: 1.5;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  background-color: #1B2430;
+}
+input, button, textarea, select {
+  font: inherit;
 }
 `;

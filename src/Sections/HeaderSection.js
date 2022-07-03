@@ -4,8 +4,8 @@ import { Header } from "../Components/styles";
 export default function HeaderSection() {
   return (
     <Header>
-      <h1>Sort.io</h1>
-      <p>Made by David Macias</p>
+      <h1>SORT.IO</h1>
+      <p>Visualize Sorting Algorithms</p>
     </Header>
   );
 }

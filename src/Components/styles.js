@@ -48,15 +48,17 @@ export const BarWrapper = styled.div`
   color: ${(props) => (props.swap ? "black" : "whtie")};
   flex: 0 10 6.2rem;
 
+  font-size: clamp(1rem, 1.5vw, 1.7rem);
+
   @media (min-width: 820px) {
     width: 15px;
-    height: ${(props) => props.width * 2.0}vw;
+    height: ${(props) => props.width * 1.6}vw;
     text-align: center;
     display: block;
     flex: 0 10 9%;
   }
   @media (min-width: 1000px) {
-    height: ${(props) => props.width * 1.5}vw;
+    height: ${(props) => props.width * 1.3}vw;
   }
   @media (min-width: 1160px) {
     height: ${(props) => props.width * 0.8}vw;
@@ -65,11 +67,17 @@ export const BarWrapper = styled.div`
 
 // Header Section********
 export const Header = styled.header`
+  background-color: #51557e;
   text-align: center;
-  padding-block: 1em;
-  background-color: red;
+  padding-block: 0.2rem;
+  color: white;
   h1 {
     color: white;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    padding: 0;
+  }
+  p {
+    font-size: clamp(1rem, 2vw, 1.3rem);
   }
 `;
 // Main Section********
@@ -79,10 +87,12 @@ export const Main = styled.main`
   flex-direction: column-reverse;
   padding-block: 1.5em;
   /* for the scroll  */
-  height: 88vh;
+  height: 85vh;
 
   @media (min-width: 820px) {
+    gap: 10vh;
     flex-direction: column;
+    height: auto;
   }
 `;
 export const BarsContainer = styled.div`
@@ -96,14 +106,14 @@ export const BarsContainer = styled.div`
   //for the scroll thing
   overflow-y: auto;
   overflow-x: hidden;
-  flex: 1;
+  /* flex: 1; */
   /* justify-content: center; */
 
   ${ScrolBarStyle}
   @media (min-width: 820px) {
     margin-bottom: 0;
     flex-direction: row;
-    width: 95%;
+    width: 85%;
     overflow-y: hidden;
     overflow-x: auto;
     justify-content: space-evenly;
@@ -111,12 +121,21 @@ export const BarsContainer = styled.div`
   }
 `;
 export const InputContainer = styled.div`
-  background-color: orange;
-  width: 100%;
-  max-width: 700px;
+  background-color: #816797;
+  width: min(100%, 600px);
   margin: 0 auto;
+
   text-align: center;
-  padding: 0.5rem;
+  padding: 1.5rem;
+
+  span {
+    color: orange;
+  }
+  h2 {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    color: black;
+    font-weight: 900;
+  }
   /* margin-block: 1.4rem; */
   input[type="range"] {
     width: 100%;
@@ -129,11 +148,14 @@ export const InputContainer = styled.div`
     padding: 0.5em;
     cursor: pointer;
   }
+
   .btns-wrapper {
     display: flex;
     /* justify-content: space-evenly; */
     flex-direction: column;
     gap: 7px;
+  }
+  button + button {
   }
 
   @media (min-width: 820px) {

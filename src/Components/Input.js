@@ -13,7 +13,9 @@ export default function Input() {
     <InputContainer>
       {console.log(useContext(BarsContext))}
 
-      <h2>Array Size ({bars.length})</h2>
+      <h2>
+        Array Size: <span>{bars.length}</span>
+      </h2>
       <input
         type="range"
         min={Config.INPUT_RANGE_MIN}
