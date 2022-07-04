@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import createrRandArr from "../util/createrRandArr";
 import { BarsContext } from "./BarsContext";
 
@@ -6,7 +6,7 @@ import { InputContainer } from "./styles";
 
 import { Config } from "../global.config";
 export default function Input() {
-  const { algo, setAlgo, bars, setBars, setActive, active } =
+  const { algo, setAlgo, bars, setBars, setSortActive, sortActive } =
     useContext(BarsContext);
 
   return (
@@ -33,7 +33,7 @@ export default function Input() {
         <button onClick={(e) => setBars(createrRandArr(bars.length))}>
           New Array
         </button>
-        <button onClick={() => setActive(!active)}>Sort</button>
+        <button onClick={() => setSortActive(!sortActive)}>Sort</button>
       </div>
     </InputContainer>
   );

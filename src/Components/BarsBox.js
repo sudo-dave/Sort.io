@@ -1,14 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BarsContext } from "../Components/BarsContext";
 import { BarsContainer } from "./styles";
 
 import Algo from "../util/sortActions";
 
 export default function BarsBox() {
-  const { algo, bars, active, setBars, setActive } = useContext(BarsContext);
-
+  const { algo, bars, sortActive, setBars, setSortActive } =
+    useContext(BarsContext);
   useEffect(() => {
-    if (active) {
+    if (sortActive) {
       const Sort = new Algo(bars, setBars);
       switch (algo) {
         case "Insertion":
@@ -23,9 +23,9 @@ export default function BarsBox() {
         default:
           console.error("Missing case");
       }
-      setActive(!active);
+      setSortActive(!sortActive);
     }
-  }, [active]);
+  }, [sortActive]);
 
   return <BarsContainer>{bars}</BarsContainer>;
 }

@@ -11,11 +11,11 @@ import { Config } from "../global.config";
 export default function BodySection() {
   const [algo, setAlgo] = useState(Config.INIT_ALGO_NAME);
   const [bars, setBars] = useState(createrRandArr(Config.INIT_ARR_SIZE));
-  const [active, setActive] = useState(false);
+  const [sortActive, setSortActive] = useState(false);
 
   const val = useMemo(
-    () => ({ algo, setAlgo, bars, setBars, active, setActive }),
-    [algo, setAlgo, bars, setBars, active, setActive]
+    () => ({ algo, setAlgo, bars, setBars, sortActive, setSortActive }),
+    [algo, setAlgo, bars, setBars, sortActive]
   );
   return (
     <Main>
