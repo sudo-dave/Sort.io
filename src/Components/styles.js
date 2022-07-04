@@ -29,11 +29,10 @@ const ScrolBarStyle = `
 
 //Bar*****
 export const BarWrapper = styled.div`
-  /* verical align the text */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* ---- */
+
   background: rgb(131, 58, 180);
   background: linear-gradient(
     198deg,
@@ -47,7 +46,6 @@ export const BarWrapper = styled.div`
   font-weight: 900;
   color: ${(props) => (props.swap ? "black" : "whtie")};
   flex: 0 10 6.2rem;
-
   font-size: clamp(1rem, 1.5vw, 1.7rem);
 
   @media (min-width: 820px) {
@@ -74,7 +72,6 @@ export const Header = styled.header`
   h1 {
     color: white;
     font-size: clamp(2.5rem, 6vw, 4rem);
-    padding: 0;
   }
   p {
     font-size: clamp(1rem, 2vw, 1.3rem);
@@ -82,7 +79,6 @@ export const Header = styled.header`
 `;
 // Main Section********
 export const Main = styled.main`
-  /* background: green; */
   display: flex;
   flex-direction: column-reverse;
   padding-block: 1.5em;
@@ -106,8 +102,6 @@ export const BarsContainer = styled.div`
   //for the scroll thing
   overflow-y: auto;
   overflow-x: hidden;
-  /* flex: 1; */
-  /* justify-content: center; */
 
   ${ScrolBarStyle}
   @media (min-width: 820px) {
@@ -124,7 +118,6 @@ export const InputContainer = styled.div`
   background-color: #816797;
   width: min(100%, 600px);
   margin: 0 auto;
-
   text-align: center;
   padding: 1.5rem;
 
@@ -136,28 +129,21 @@ export const InputContainer = styled.div`
     color: black;
     font-weight: 900;
   }
-  /* margin-block: 1.4rem; */
   input[type="range"] {
     width: 100%;
     margin-block: 1rem;
   }
-
   select,
   button {
     font-size: 1.2rem;
     padding: 0.5em;
     cursor: pointer;
   }
-
   .btns-wrapper {
     display: flex;
-    /* justify-content: space-evenly; */
     flex-direction: column;
     gap: 7px;
   }
-  button + button {
-  }
-
   @media (min-width: 820px) {
     .btns-wrapper {
       flex-direction: row;
