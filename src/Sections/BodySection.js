@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import Input from "../Components/Input";
 
 import { BarsContext } from "../Components/BarsContext";

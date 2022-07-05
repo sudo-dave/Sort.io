@@ -47,6 +47,7 @@ export const BarWrapper = styled.div`
   color: ${(props) => (props.swap ? "black" : "whtie")};
   flex: 0 10 6.2rem;
   font-size: clamp(1rem, 1.5vw, 1.7rem);
+  border-radius: 0.5rem;
 
   @media (min-width: 820px) {
     width: 15px;
@@ -59,12 +60,14 @@ export const BarWrapper = styled.div`
     height: ${(props) => props.width * 1.3}vw;
   }
   @media (min-width: 1160px) {
-    height: ${(props) => props.width * 0.8}vw;
+    height: ${(props) => props.width * 0.7}vw;
   }
 `;
 
 // Header Section********
 export const Header = styled.header`
+  border-radius: 0.5rem;
+
   background-color: #51557e;
   text-align: center;
   padding-block: 0.2rem;
@@ -72,9 +75,11 @@ export const Header = styled.header`
   h1 {
     color: white;
     font-size: clamp(2.5rem, 6vw, 4rem);
+    letter-spacing: 0.5rem;
   }
   p {
     font-size: clamp(1rem, 2vw, 1.3rem);
+    letter-spacing: 0.2rem;
   }
 `;
 // Main Section********
@@ -109,7 +114,7 @@ export const BarsContainer = styled.div`
     flex-direction: row;
     width: 85%;
     overflow-y: hidden;
-    overflow-x: auto;
+    overflow-x: hidden;
     justify-content: space-evenly;
     align-items: flex-end;
   }
@@ -120,14 +125,16 @@ export const InputContainer = styled.div`
   margin: 0 auto;
   text-align: center;
   padding: 1.5rem;
+  border-radius: 0.5rem;
 
   span {
     color: orange;
   }
   h2 {
-    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-size: clamp(1.5rem, 2.1vw, 2.1rem);
     color: black;
     font-weight: 900;
+    letter-spacing: 0.15rem;
   }
   input[type="range"] {
     width: 100%;
@@ -137,12 +144,27 @@ export const InputContainer = styled.div`
   button {
     font-size: 1.2rem;
     padding: 0.5em;
+    letter-spacing: 0.1rem;
     cursor: pointer;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    user-select: none;
+    text-transform: uppercase;
+    border: 0;
   }
   .btns-wrapper {
     display: flex;
     flex-direction: column;
     gap: 7px;
+  }
+  .btn-sort {
+    background-image: linear-gradient(-180deg, #37aee2 0%, #1e96c8 100%);
+    border-radius: 0.5rem;
+    color: #ffffff;
+    user-select: none;
+  }
+  .btn-sort:hover {
+    background-image: linear-gradient(-180deg, #1d95c9 0%, #17759c 100%);
   }
   @media (min-width: 820px) {
     .btns-wrapper {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BarWrapper } from "./styles";
 
 export default function Bar({ value, swap = false }) {
