@@ -40,7 +40,8 @@ export const BarWrapper = styled.div`
     rgba(141, 29, 253, 1) 33%,
     rgb(29, 156, 253) 100%
   );
-  background: ${(props) => (props.swap ? "#fd7e1d" : "")};
+  background: ${(props) =>
+    props.swap ? "linear-gradient(-180deg, #ff4e00 0%, #ec9f05 100%)" : ""};
   padding: 0.5rem;
   width: ${(props) => props.width * 2.5}vw;
   font-weight: 900;
@@ -50,7 +51,6 @@ export const BarWrapper = styled.div`
   border-radius: 0.5rem;
 
   @media (min-width: 820px) {
-    width: 15px;
     height: ${(props) => props.width * 1.6}vw;
     text-align: center;
     display: block;
@@ -73,7 +73,6 @@ export const Header = styled.header`
   padding-block: 0.2rem;
   color: white;
   h1 {
-    color: white;
     font-size: clamp(2.5rem, 6vw, 4rem);
     letter-spacing: 0.5rem;
   }
@@ -91,9 +90,10 @@ export const Main = styled.main`
   height: 85vh;
 
   @media (min-width: 820px) {
-    gap: 10vh;
-    flex-direction: column;
+    display: block;
     height: auto;
+    /* gap: 10vh; */
+    /* flex-direction: column; */
   }
 `;
 export const BarsContainer = styled.div`
@@ -110,13 +110,15 @@ export const BarsContainer = styled.div`
 
   ${ScrolBarStyle}
   @media (min-width: 820px) {
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
     flex-direction: row;
     width: 85%;
     overflow-y: hidden;
     overflow-x: hidden;
     justify-content: space-evenly;
     align-items: flex-end;
+
+    margin-top: 3rem;
   }
 `;
 export const InputContainer = styled.div`
@@ -124,7 +126,7 @@ export const InputContainer = styled.div`
   width: min(100%, 600px);
   margin: 0 auto;
   text-align: center;
-  padding: 1.5rem;
+  padding: 0.7rem;
   border-radius: 0.5rem;
 
   span {
@@ -138,7 +140,7 @@ export const InputContainer = styled.div`
   }
   input[type="range"] {
     width: 100%;
-    margin-block: 1rem;
+    margin-block: 1.2rem;
   }
   select,
   button {
@@ -155,21 +157,31 @@ export const InputContainer = styled.div`
   .btns-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 0.4rem;
   }
   .btn-sort {
-    background-image: linear-gradient(-180deg, #37aee2 0%, #1e96c8 100%);
-    border-radius: 0.5rem;
+    background-image: linear-gradient(-180deg, #ff4e00 0%, #ec9f05 100%);
     color: #ffffff;
-    user-select: none;
+    font-weight: 900;
   }
   .btn-sort:hover {
-    background-image: linear-gradient(-180deg, #1d95c9 0%, #17759c 100%);
+    background-image: linear-gradient(-180deg, #ff4e00 0%, #ec9f05 100%);
   }
   @media (min-width: 820px) {
+    padding: 1.5rem;
+
     .btns-wrapper {
       flex-direction: row;
       justify-content: space-evenly;
+    }
+
+    input[type="range"] {
+      margin-block: 1.5rem;
+    }
+
+    select,
+    button {
+      padding: 0.7rem;
     }
   }
 `;
