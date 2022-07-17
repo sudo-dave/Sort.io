@@ -1,6 +1,11 @@
 # Sort.io--Sorting-Visualizer
+
 An intuitive, dynamic, and responsive web sorting visualizer app created with React.js. Using component-level styles with styled components. Examine how innsertion, bubble, and selection sort work to get a better understanding of how sorting works.
 ### Deployed @ https://sort-io-pi.vercel.app/
+
+## Demo
+<img src="img/../Img/demo_sort.gif"> 
+
 ## Available Scripts
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
