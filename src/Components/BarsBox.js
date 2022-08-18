@@ -21,10 +21,10 @@ export default function BarsBox() {
           Sort.Selection();
           break;
         default:
-          console.error("Missing case");
       }
       setSortActive(!sortActive);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortActive]);
 
   return <BarsContainer>{bars}</BarsContainer>;

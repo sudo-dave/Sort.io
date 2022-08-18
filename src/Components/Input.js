@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import createrRandArr from "../util/createrRandArr";
+import createRandBars from "../util/createRandBars";
 import { BarsContext } from "./BarsContext";
 
 import { InputContainer } from "./styles";
@@ -19,7 +19,7 @@ export default function Input() {
         min={Config.INPUT_RANGE_MIN}
         max={Config.INPUT_RANGE_MAX}
         value={bars.length}
-        onChange={(e) => setBars(createrRandArr(e.target.value))}
+        onChange={(e) => setBars(createRandBars(e.target.value))}
       />
 
       <div className="btns-wrapper">
@@ -28,7 +28,7 @@ export default function Input() {
           <option value="Bubble">Bubble</option>
           <option value="Selection">Selection</option>
         </select>
-        <button onClick={(e) => setBars(createrRandArr(bars.length))}>
+        <button onClick={(e) => setBars(createRandBars(bars.length))}>
           New Array
         </button>
         <button className="btn-sort" onClick={() => setSortActive(!sortActive)}>
