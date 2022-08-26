@@ -27,26 +27,26 @@ To configure you have to change the `global.config.js` file.
 
 For `SEC_ANIMATION__DELAY`, 1000 = 1sec addiontal to the base.
 
-## Available Scripts
+## How to run locally
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-In the project directory, you can run:
 
-### `npm start`
+Clone the repository and change directory.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+git clone https://github.com/sudo-dave/Sort.io--Sorting-Visualizer
+cd WhereToEat.io
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Install npm dependencies
 
-### `npm run build`
+```
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Run the app locally.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm start
+```
