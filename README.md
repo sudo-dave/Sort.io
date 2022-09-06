@@ -8,7 +8,7 @@ An intuitive, dynamic, and responsive web sorting visualizer app created with **
 
 <img src="img/../Img/demo_sort.gif">
 
-## Configure
+## Configuration
 
 You can also configure the animation speed, inital array size, range and more.
 To configure you have to change the `global.config.js` file.
@@ -27,7 +27,7 @@ To configure you have to change the `global.config.js` file.
 
 For `SEC_ANIMATION__DELAY`, 1000 = 1sec addiontal to the base.
 
-## How to run locally
+## How to host locally
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
