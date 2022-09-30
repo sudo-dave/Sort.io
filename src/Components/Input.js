@@ -12,7 +12,7 @@ export default function Input() {
   return (
     <InputContainer>
       <h2>
-        Array Size: <span>{bars.length}</span>
+        ARRAY SIZE: <span>{bars.length}</span>
       </h2>
       <input
         type="range"

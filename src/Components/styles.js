@@ -88,7 +88,6 @@ export const Main = styled.main`
   padding-block: 1.5em;
   /* for the scroll  */
   height: 85vh;
-
   @media (min-width: 820px) {
     display: block;
     height: auto;
@@ -107,7 +106,6 @@ export const BarsContainer = styled.div`
   //for the scroll thing
   overflow-y: auto;
   overflow-x: hidden;
-
   ${ScrolBarStyle}
   @media (min-width: 820px) {
     /* margin-bottom: 0; */
@@ -128,7 +126,6 @@ export const InputContainer = styled.div`
   text-align: center;
   padding: 0.7rem;
   border-radius: 0.5rem;
-
   span {
     color: orange;
   }
