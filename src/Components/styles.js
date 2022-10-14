@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 //Util
 const ScrolBarStyle = `
 
@@ -32,7 +31,6 @@ export const BarWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   background: rgb(131, 58, 180);
   background: linear-gradient(
     198deg,
@@ -63,11 +61,9 @@ export const BarWrapper = styled.div`
     height: ${(props) => props.width * 0.7}vw;
   }
 `;
-
 // Header Section********
 export const Header = styled.header`
   border-radius: 0.5rem;
-
   background-color: #51557e;
   text-align: center;
   padding-block: 0.2rem;
@@ -87,11 +83,12 @@ export const Main = styled.main`
   flex-direction: column-reverse;
   padding-block: 1.5em;
   /* for the scroll  */
-  height: 85vh;
+  height: 90vh;
   @media (min-width: 820px) {
     display: block;
     height: auto;
     /* gap: 10vh; */
+    height: 85vh;
     /* flex-direction: column; */
   }
 `;
@@ -138,6 +135,7 @@ export const InputContainer = styled.div`
   input[type="range"] {
     width: 100%;
     margin-block: 1.2rem;
+    accent-color: #2c041c;
   }
   select,
   button {
@@ -160,22 +158,31 @@ export const InputContainer = styled.div`
     background-image: linear-gradient(-180deg, #ff4e00 0%, #ec9f05 100%);
     color: #ffffff;
     font-weight: 900;
+    &:active {
+      box-shadow: 0 5px #656;
+      transform: translateY(4px);
+    }
   }
-  .btn-sort:hover {
-    background-image: linear-gradient(-180deg, #ff4e00 0%, #ec9f05 100%);
+  .btn-new {
+    background-color: #d8d8d8;
+    &:hover {
+      background-color: grey;
+      color: white;
+    }
+    &:active {
+      box-shadow: 0 5px #656;
+      transform: translateY(4px);
+    }
   }
   @media (min-width: 820px) {
     padding: 1.5rem;
-
     .btns-wrapper {
       flex-direction: row;
       justify-content: space-evenly;
     }
-
     input[type="range"] {
       margin-block: 1.5rem;
     }
-
     select,
     button {
       padding: 0.7rem;
