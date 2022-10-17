@@ -11,12 +11,12 @@ export default function BarsBox() {
     sortActive,
     setBars,
     setSortActive,
-    setFinished,
-    finished,
+    setIsFinished,
+    isfinished,
   } = useContext(BarsContext);
   useEffect(() => {
     if (sortActive) {
-      setFinished(!finished);
+      setIsFinished(!isfinished);
       const Sort = new Algo(bars, setBars, setSortActive, sortActive);
 
       switch (algo) {

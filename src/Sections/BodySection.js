@@ -12,7 +12,7 @@ export default function BodySection() {
   const [algo, setAlgo] = useState(Config.INITIAL_ALGO_NAME);
   const [bars, setBars] = useState(createRandBars(Config.INITIAL_ARR_SIZE));
   const [sortActive, setSortActive] = useState(false);
-  const [finished, setFinished] = useState(false);
+  const [isfinished, setIsFinished] = useState(false);
   const val = useMemo(
     () => ({
       algo,
@@ -21,8 +21,8 @@ export default function BodySection() {
       setBars,
       sortActive,
       setSortActive,
-      finished,
-      setFinished,
+      isfinished,
+      setIsFinished,
     }),
     [
       algo,
@@ -31,8 +31,8 @@ export default function BodySection() {
       setBars,
       sortActive,
       setSortActive,
-      finished,
-      setFinished,
+      isfinished,
+      setIsFinished,
     ]
   );
   return (

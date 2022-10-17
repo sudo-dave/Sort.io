@@ -14,8 +14,8 @@ export default function Input() {
     setBars,
     setSortActive,
     sortActive,
-    finished,
-    setFinished,
+    isfinished,
+    setIsFinished,
   } = useContext(BarsContext);
   return (
     <InputContainer>
@@ -28,7 +28,10 @@ export default function Input() {
         max={Config.INPUT_RANGE_MAX}
         disabled={sortActive}
         value={bars.length}
-        onChange={(e) => setBars(createRandBars(e.target.value))}
+        onChange={(e) => {
+          setIsFinished(false);
+          setBars(createRandBars(e.target.value));
+        }}
       />
 
       <div className="btns-wrapper">
@@ -45,7 +48,7 @@ export default function Input() {
           className="btn-new"
           disabled={sortActive}
           onClick={() => {
-            setFinished(false);
+            setIsFinished(false);
             setBars(createRandBars(bars.length));
           }}
         >
@@ -54,7 +57,7 @@ export default function Input() {
         <button
           className="btn-sort"
           disabled={sortActive}
-          onClick={() => !finished && setSortActive(!sortActive)}
+          onClick={() => !isfinished && setSortActive(!sortActive)}
         >
           Sort
         </button>
