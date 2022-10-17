@@ -25,7 +25,7 @@ To configure you have to change the `global.config.js` file.
 }
 ```
 
-For `SEC_ANIMATION__DELAY`, 1000 = 1sec addiontal to the base.
+For `SEC_ANIMATION__DELAY`, every 1000 = 1sec delay for swap animation.
 
 ## How to host locally
 
