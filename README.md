@@ -36,7 +36,7 @@ Clone the repository and change directory.
 
 ```
 git clone https://github.com/sudo-dave/Sort.io--Sorting-Visualizer
-cd WhereToEat.io
+cd Sort.io--Sorting-Visualizer
 ```
 
 Install npm dependencies
