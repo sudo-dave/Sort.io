@@ -5,11 +5,20 @@ import { BarsContainer } from "./styles";
 import Algo from "../util/sortActions";
 
 export default function BarsBox() {
-  const { algo, bars, sortActive, setBars, setSortActive } =
-    useContext(BarsContext);
+  const {
+    algo,
+    bars,
+    sortActive,
+    setBars,
+    setSortActive,
+    setFinished,
+    finished,
+  } = useContext(BarsContext);
   useEffect(() => {
     if (sortActive) {
+      setFinished(!finished);
       const Sort = new Algo(bars, setBars, setSortActive, sortActive);
+
       switch (algo) {
         case "Insertion":
           Sort.Insertion();

@@ -5,10 +5,18 @@ import { BarsContext } from "./BarsContext";
 import { InputContainer } from "./styles";
 
 import { Config } from "../global.config";
-export default function Input() {
-  const { algo, setAlgo, bars, setBars, setSortActive, sortActive } =
-    useContext(BarsContext);
 
+export default function Input() {
+  const {
+    algo,
+    setAlgo,
+    bars,
+    setBars,
+    setSortActive,
+    sortActive,
+    finished,
+    setFinished,
+  } = useContext(BarsContext);
   return (
     <InputContainer>
       <h2>
@@ -36,14 +44,17 @@ export default function Input() {
         <button
           className="btn-new"
           disabled={sortActive}
-          onClick={(e) => setBars(createRandBars(bars.length))}
+          onClick={() => {
+            setFinished(false);
+            setBars(createRandBars(bars.length));
+          }}
         >
           New Array
         </button>
         <button
           className="btn-sort"
           disabled={sortActive}
-          onClick={() => setSortActive(!sortActive)}
+          onClick={() => !finished && setSortActive(!sortActive)}
         >
           Sort
         </button>
