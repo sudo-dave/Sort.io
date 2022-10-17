@@ -18,23 +18,33 @@ export default function Input() {
         type="range"
         min={Config.INPUT_RANGE_MIN}
         max={Config.INPUT_RANGE_MAX}
+        disabled={sortActive}
         value={bars.length}
         onChange={(e) => setBars(createRandBars(e.target.value))}
       />
 
       <div className="btns-wrapper">
-        <select value={algo} onChange={(e) => setAlgo(e.target.value)}>
+        <select
+          value={algo}
+          disabled={sortActive}
+          onChange={(e) => setAlgo(e.target.value)}
+        >
           <option value="Insertion">Insertion</option>
           <option value="Bubble">Bubble</option>
           <option value="Selection">Selection</option>
         </select>
         <button
           className="btn-new"
+          disabled={sortActive}
           onClick={(e) => setBars(createRandBars(bars.length))}
         >
           New Array
         </button>
-        <button className="btn-sort" onClick={() => setSortActive(!sortActive)}>
+        <button
+          className="btn-sort"
+          disabled={sortActive}
+          onClick={() => setSortActive(!sortActive)}
+        >
           Sort
         </button>
       </div>

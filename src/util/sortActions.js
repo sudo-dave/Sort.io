@@ -6,7 +6,7 @@ const delay = () =>
   new Promise((resolve) => setTimeout(resolve, Config.SEC_ANIMATION__DELAY));
 
 export default class Algo {
-  constructor(bars, setBars) {
+  constructor(bars, setBars, setSortActive, sortActive) {
     const baArrOfObjs = [];
     // [{value:.. id: ..} ...]
     bars.forEach((e) => {
@@ -15,6 +15,11 @@ export default class Algo {
 
     this.barsObj = baArrOfObjs;
     this.setBars = setBars;
+    this.setSortActive = setSortActive;
+    this.sortActive = sortActive;
+  }
+  setActive() {
+    this.setSortActive(!this.sortActive);
   }
 
   objToBarRender() {
@@ -69,6 +74,7 @@ export default class Algo {
       }
     }
     this.objToBarRender();
+    this.setActive();
   }
   async Bubble() {
     const barObj = this.barsObj;
@@ -86,6 +92,7 @@ export default class Algo {
       }
     }
     this.objToBarRender();
+    this.setActive();
   }
   async Selection() {
     const barObj = this.barsObj;
@@ -102,5 +109,6 @@ export default class Algo {
       this.swap(min_id, i);
     }
     this.objToBarRender();
+    this.setActive();
   }
 }

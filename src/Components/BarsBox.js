@@ -9,7 +9,7 @@ export default function BarsBox() {
     useContext(BarsContext);
   useEffect(() => {
     if (sortActive) {
-      const Sort = new Algo(bars, setBars);
+      const Sort = new Algo(bars, setBars, setSortActive, sortActive);
       switch (algo) {
         case "Insertion":
           Sort.Insertion();
@@ -22,7 +22,6 @@ export default function BarsBox() {
           break;
         default:
       }
-      setSortActive(!sortActive);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortActive]);

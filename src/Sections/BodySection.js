@@ -15,7 +15,7 @@ export default function BodySection() {
 
   const val = useMemo(
     () => ({ algo, setAlgo, bars, setBars, sortActive, setSortActive }),
-    [algo, setAlgo, bars, setBars, sortActive]
+    [algo, setAlgo, bars, setBars, sortActive, setSortActive]
   );
   return (
     <Main>
